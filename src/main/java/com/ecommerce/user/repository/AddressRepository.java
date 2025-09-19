@@ -19,6 +19,6 @@ public interface AddressRepository extends JpaRepository<Address, UUID> {
     Optional<Address> findDefaultAddressByUserId(@Param("userId") UUID userId);
 
     @Query("SELECT a FROM Address a WHERE a.user.id = :userId AND a.addressType = :addressType")
-    List<Address> findByUserIdAndAddressType(@Param("userId") UUID userId, 
-                                            @Param("addressType") Address.AddressType addressType);
+    List<Address> findByUserIdAndAddressType(@Param("userId") UUID userId,
+            @Param("addressType") Address.AddressType addressType);
 }
