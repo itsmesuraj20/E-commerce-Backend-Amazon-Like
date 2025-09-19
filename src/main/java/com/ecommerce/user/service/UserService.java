@@ -7,6 +7,8 @@ import com.ecommerce.user.repository.UserRepository;
 import com.ecommerce.user.repository.AddressRepository;
 import com.ecommerce.user.security.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -185,5 +187,37 @@ public class UserService {
         response.setCreatedAt(address.getCreatedAt());
         response.setUpdatedAt(address.getUpdatedAt());
         return response;
+    }
+
+    // Admin methods for user management
+    @Transactional(readOnly = true)
+    public Page<UserResponse> getAllUsers(Pageable pageable) {
+        Page<User> users = userRepository.findAll(pageable);
+        return users.map(this::convertToUserResponse);
+    }
+
+    @Transactional
+    public UserResponse activateUser(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setIsActive(true);
+        User savedUser = userRepository.save(user);
+        return convertToUserResponse(savedUser);
+    }
+
+    @Transactional
+    public UserResponse deactivateUser(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setIsActive(false);
+        User savedUser = userRepository.save(user);
+        return convertToUserResponse(savedUser);
+    }
+
+    @Transactional
+    public void deleteUser(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        userRepository.delete(user);
     }
 }
