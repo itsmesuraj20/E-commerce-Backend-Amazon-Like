@@ -1,7 +1,7 @@
 # E-commerce-Backend-Amazon-Like
 
 ### 🔧 Tech Stack:
-	-	Go or Java + Spring Boot, PostgreSQL, Redis
+	-	````Java + Spring Boot, PostgreSQL, Redis
 	-	gRPC, Kafka, Docker/K8s
 	-	Optional: React frontend
 
