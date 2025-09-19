@@ -71,8 +71,7 @@ public class ProductService {
                 criteria.getMaxPrice(),
                 criteria.getMinRating(),
                 criteria.getIsFeatured(),
-                pageable
-        );
+                pageable);
 
         return products.map(this::convertToProductResponse);
     }
@@ -240,9 +239,9 @@ public class ProductService {
     }
 
     private Sort createSort(String sortBy, String sortDirection) {
-        Sort.Direction direction = "desc".equalsIgnoreCase(sortDirection) 
-            ? Sort.Direction.DESC 
-            : Sort.Direction.ASC;
+        Sort.Direction direction = "desc".equalsIgnoreCase(sortDirection)
+                ? Sort.Direction.DESC
+                : Sort.Direction.ASC;
 
         return switch (sortBy.toLowerCase()) {
             case "name" -> Sort.by(direction, "name");

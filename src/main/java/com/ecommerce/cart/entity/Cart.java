@@ -48,7 +48,8 @@ public class Cart {
     private LocalDateTime updatedAt;
 
     // Constructors
-    public Cart() {}
+    public Cart() {
+    }
 
     public Cart(UUID userId, String sessionId) {
         this.userId = userId;

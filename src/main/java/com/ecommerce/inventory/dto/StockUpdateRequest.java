@@ -16,7 +16,8 @@ public class StockUpdateRequest {
     private String notes;
 
     // Constructors
-    public StockUpdateRequest() {}
+    public StockUpdateRequest() {
+    }
 
     public StockUpdateRequest(UUID productId, Integer quantity) {
         this.productId = productId;

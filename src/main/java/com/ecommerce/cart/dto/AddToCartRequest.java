@@ -14,7 +14,8 @@ public class AddToCartRequest {
     private Integer quantity;
 
     // Constructors
-    public AddToCartRequest() {}
+    public AddToCartRequest() {
+    }
 
     public AddToCartRequest(UUID productId, Integer quantity) {
         this.productId = productId;

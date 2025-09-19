@@ -19,7 +19,8 @@ public class ReserveStockRequest {
     private String referenceType;
 
     // Constructors
-    public ReserveStockRequest() {}
+    public ReserveStockRequest() {
+    }
 
     public ReserveStockRequest(UUID productId, Integer quantity, UUID referenceId, String referenceType) {
         this.productId = productId;

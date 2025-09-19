@@ -44,10 +44,11 @@ public class InventoryTransaction {
     private LocalDateTime createdAt;
 
     // Constructors
-    public InventoryTransaction() {}
+    public InventoryTransaction() {
+    }
 
-    public InventoryTransaction(UUID inventoryId, TransactionType transactionType, 
-                               Integer quantity, Integer previousQuantity, Integer newQuantity) {
+    public InventoryTransaction(UUID inventoryId, TransactionType transactionType,
+            Integer quantity, Integer previousQuantity, Integer newQuantity) {
         this.inventoryId = inventoryId;
         this.transactionType = transactionType;
         this.quantity = quantity;
@@ -57,13 +58,13 @@ public class InventoryTransaction {
 
     // Enums
     public enum TransactionType {
-        INBOUND,    // Stock received
-        OUTBOUND,   // Stock sold/shipped
+        INBOUND, // Stock received
+        OUTBOUND, // Stock sold/shipped
         ADJUSTMENT, // Manual adjustment
-        RESERVED,   // Stock reserved for order
-        RELEASED,   // Reserved stock released back
-        EXPIRED,    // Stock expired/damaged
-        RETURN      // Stock returned
+        RESERVED, // Stock reserved for order
+        RELEASED, // Reserved stock released back
+        EXPIRED, // Stock expired/damaged
+        RETURN // Stock returned
     }
 
     // Getters and Setters

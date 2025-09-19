@@ -50,7 +50,8 @@ public class CartItem {
     private LocalDateTime updatedAt;
 
     // Constructors
-    public CartItem() {}
+    public CartItem() {
+    }
 
     public CartItem(Cart cart, UUID productId, Integer quantity, BigDecimal unitPrice) {
         this.cart = cart;

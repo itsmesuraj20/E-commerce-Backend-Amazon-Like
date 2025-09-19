@@ -71,8 +71,7 @@ public class InventoryService {
                 InventoryTransaction.TransactionType.ADJUSTMENT,
                 request.getQuantity() - previousQuantity,
                 previousQuantity,
-                request.getQuantity()
-        );
+                request.getQuantity());
         transaction.setNotes(request.getNotes());
 
         inventoryRepository.save(inventory);
@@ -97,8 +96,7 @@ public class InventoryService {
                 InventoryTransaction.TransactionType.INBOUND,
                 quantity,
                 previousQuantity,
-                inventory.getQuantity()
-        );
+                inventory.getQuantity());
         transaction.setNotes(notes);
 
         inventoryRepository.save(inventory);
@@ -115,7 +113,7 @@ public class InventoryService {
                 .orElseThrow(() -> new RuntimeException("Inventory not found for product: " + productId));
 
         if (inventory.getAvailableQuantity() < quantity) {
-            throw new RuntimeException("Insufficient stock available. Available: " + 
+            throw new RuntimeException("Insufficient stock available. Available: " +
                     inventory.getAvailableQuantity() + ", Requested: " + quantity);
         }
 
@@ -128,8 +126,7 @@ public class InventoryService {
                 InventoryTransaction.TransactionType.OUTBOUND,
                 -quantity,
                 previousQuantity,
-                inventory.getQuantity()
-        );
+                inventory.getQuantity());
         transaction.setNotes(notes);
 
         inventoryRepository.save(inventory);
@@ -158,8 +155,7 @@ public class InventoryService {
                 InventoryTransaction.TransactionType.RESERVED,
                 request.getQuantity(),
                 inventory.getQuantity() - previousReserved,
-                inventory.getAvailableQuantity()
-        );
+                inventory.getAvailableQuantity());
         transaction.setReferenceId(request.getReferenceId());
         transaction.setReferenceType(request.getReferenceType());
 
@@ -189,8 +185,7 @@ public class InventoryService {
                 InventoryTransaction.TransactionType.RELEASED,
                 -quantity,
                 inventory.getQuantity() - previousReserved,
-                inventory.getAvailableQuantity()
-        );
+                inventory.getAvailableQuantity());
         transaction.setReferenceId(referenceId);
         transaction.setReferenceType(referenceType);
 
@@ -210,7 +205,7 @@ public class InventoryService {
         }
 
         Integer previousQuantity = inventory.getQuantity();
-        
+
         inventory.setQuantity(inventory.getQuantity() - quantity);
         inventory.setReservedQuantity(inventory.getReservedQuantity() - quantity);
 
@@ -220,8 +215,7 @@ public class InventoryService {
                 InventoryTransaction.TransactionType.OUTBOUND,
                 -quantity,
                 previousQuantity,
-                inventory.getQuantity()
-        );
+                inventory.getQuantity());
         transaction.setReferenceId(referenceId);
         transaction.setReferenceType(referenceType);
 

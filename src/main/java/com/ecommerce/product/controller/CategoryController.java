@@ -69,7 +69,7 @@ public class CategoryController {
     @PreAuthorize("hasRole('ADMIN')")
     @Operation(summary = "Update category")
     public ResponseEntity<CategoryResponse> updateCategory(
-            @PathVariable UUID id, 
+            @PathVariable UUID id,
             @Valid @RequestBody CategoryRequest categoryRequest) {
         CategoryResponse category = categoryService.updateCategory(id, categoryRequest);
         return ResponseEntity.ok(category);

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 public class ProductSearchCriteria {
-    
+
     private String keyword; // Search in name, description
     private UUID categoryId;
     private UUID brandId;
@@ -19,11 +19,11 @@ public class ProductSearchCriteria {
     private Boolean isFeatured;
     private Boolean inStock;
     private List<String> tags;
-    
+
     // Sorting
     private String sortBy = "createdAt"; // name, price, rating, createdAt
     private String sortDirection = "desc"; // asc, desc
-    
+
     // Pagination
     private Integer page = 0;
     private Integer size = 20;

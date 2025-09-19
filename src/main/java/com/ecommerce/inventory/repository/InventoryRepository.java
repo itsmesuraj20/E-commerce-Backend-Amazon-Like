@@ -12,25 +12,25 @@ import java.util.UUID;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, UUID> {
-    
-    Optional<Inventory> findByProductIdAndIsActiveTrue(UUID productId);
-    
-    List<Inventory> findByIsActiveTrueOrderByUpdatedAtDesc();
-    
-    @Query("SELECT i FROM Inventory i WHERE i.isActive = true AND " +
-           "(i.quantity - i.reservedQuantity) <= i.reorderLevel")
-    List<Inventory> findLowStockItems();
-    
-    @Query("SELECT i FROM Inventory i WHERE i.isActive = true AND " +
-           "(i.quantity - i.reservedQuantity) <= 0")
-    List<Inventory> findOutOfStockItems();
-    
-    @Query("SELECT i FROM Inventory i WHERE i.productId IN :productIds AND i.isActive = true")
-    List<Inventory> findByProductIdsAndIsActiveTrue(@Param("productIds") List<UUID> productIds);
-    
-    @Query("SELECT SUM(i.quantity) FROM Inventory i WHERE i.isActive = true")
-    Long getTotalInventoryCount();
-    
-    @Query("SELECT SUM(i.reservedQuantity) FROM Inventory i WHERE i.isActive = true")
-    Long getTotalReservedCount();
+
+       Optional<Inventory> findByProductIdAndIsActiveTrue(UUID productId);
+
+       List<Inventory> findByIsActiveTrueOrderByUpdatedAtDesc();
+
+       @Query("SELECT i FROM Inventory i WHERE i.isActive = true AND " +
+                     "(i.quantity - i.reservedQuantity) <= i.reorderLevel")
+       List<Inventory> findLowStockItems();
+
+       @Query("SELECT i FROM Inventory i WHERE i.isActive = true AND " +
+                     "(i.quantity - i.reservedQuantity) <= 0")
+       List<Inventory> findOutOfStockItems();
+
+       @Query("SELECT i FROM Inventory i WHERE i.productId IN :productIds AND i.isActive = true")
+       List<Inventory> findByProductIdsAndIsActiveTrue(@Param("productIds") List<UUID> productIds);
+
+       @Query("SELECT SUM(i.quantity) FROM Inventory i WHERE i.isActive = true")
+       Long getTotalInventoryCount();
+
+       @Query("SELECT SUM(i.reservedQuantity) FROM Inventory i WHERE i.isActive = true")
+       Long getTotalReservedCount();
 }

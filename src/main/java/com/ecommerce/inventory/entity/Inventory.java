@@ -42,7 +42,8 @@ public class Inventory {
     private LocalDateTime updatedAt;
 
     // Constructors
-    public Inventory() {}
+    public Inventory() {
+    }
 
     public Inventory(UUID productId, Integer quantity, Integer reorderLevel, Integer maxStockLevel) {
         this.productId = productId;

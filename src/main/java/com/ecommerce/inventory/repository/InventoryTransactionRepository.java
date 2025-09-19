@@ -14,23 +14,23 @@ import java.util.UUID;
 
 @Repository
 public interface InventoryTransactionRepository extends JpaRepository<InventoryTransaction, UUID> {
-    
+
     List<InventoryTransaction> findByInventoryIdOrderByCreatedAtDesc(UUID inventoryId);
-    
+
     Page<InventoryTransaction> findByInventoryIdOrderByCreatedAtDesc(UUID inventoryId, Pageable pageable);
-    
+
     List<InventoryTransaction> findByTransactionTypeOrderByCreatedAtDesc(
-        InventoryTransaction.TransactionType transactionType);
-    
+            InventoryTransaction.TransactionType transactionType);
+
     @Query("SELECT it FROM InventoryTransaction it WHERE it.referenceId = :referenceId " +
-           "AND it.referenceType = :referenceType ORDER BY it.createdAt DESC")
+            "AND it.referenceType = :referenceType ORDER BY it.createdAt DESC")
     List<InventoryTransaction> findByReferenceIdAndReferenceType(
-        @Param("referenceId") UUID referenceId, 
-        @Param("referenceType") String referenceType);
-    
+            @Param("referenceId") UUID referenceId,
+            @Param("referenceType") String referenceType);
+
     @Query("SELECT it FROM InventoryTransaction it WHERE it.createdAt BETWEEN :startDate AND :endDate " +
-           "ORDER BY it.createdAt DESC")
+            "ORDER BY it.createdAt DESC")
     List<InventoryTransaction> findByCreatedAtBetween(
-        @Param("startDate") LocalDateTime startDate, 
-        @Param("endDate") LocalDateTime endDate);
+            @Param("startDate") LocalDateTime startDate,
+            @Param("endDate") LocalDateTime endDate);
 }

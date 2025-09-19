@@ -9,7 +9,8 @@ public class UpdateCartItemRequest {
     private Integer quantity;
 
     // Constructors
-    public UpdateCartItemRequest() {}
+    public UpdateCartItemRequest() {
+    }
 
     public UpdateCartItemRequest(Integer quantity) {
         this.quantity = quantity;

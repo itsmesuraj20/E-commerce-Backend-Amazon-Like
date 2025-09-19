@@ -18,7 +18,8 @@ public class InventoryResponse {
     private LocalDateTime updatedAt;
 
     // Constructors
-    public InventoryResponse() {}
+    public InventoryResponse() {
+    }
 
     // Getters and Setters
     public UUID getId() {

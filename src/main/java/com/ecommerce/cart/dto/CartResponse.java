@@ -16,7 +16,8 @@ public class CartResponse {
     private LocalDateTime updatedAt;
 
     // Constructors
-    public CartResponse() {}
+    public CartResponse() {
+    }
 
     // Getters and Setters
     public UUID getId() {
