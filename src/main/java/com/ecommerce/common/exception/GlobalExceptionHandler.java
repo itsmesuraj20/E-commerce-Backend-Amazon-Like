@@ -35,7 +35,7 @@ public class GlobalExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        
+
         return ResponseEntity.badRequest()
                 .body(new ApiResponse(false, "Validation failed", errors));
     }
